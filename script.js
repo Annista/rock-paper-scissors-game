@@ -25,4 +25,59 @@ function computerPlay(){
 
 }
 
-console.log(computerPlay());
+//console.log(computerPlay());
+
+function playRound(playSelection, computerSelection){
+   let playerSelectionUpper= playSelection.toUpperCase(); //Create the variable playerSelectionUpper
+        //Assign to playerSelectionUpper the playerSelection parameter converted to UpperCase   
+        
+    switch(playerSelectionUpper){ //Evaluate the variable playerSelectionUpper
+
+        case 'ROCK':                        //If playerSelectionUpper is 'ROCK', then test for the following:
+            if(computerSelection==='SCISSORS'){           //If computerSelection is 'SCISSORS', return the 
+                return "You win, Rock beats Scissors";    //statement, "You win, Rock beats Scissors"
+            
+            }else if(computerSelection==='PAPER'){          //Else, If computerSelection is 'PAPER', return the 
+                    return "You Lose, Paper beats Rock"     //statement, "You lose, Paper beats Rock"
+            
+                  }else if(computerSelection==='ROCK'){   //Else, If playerSelectionUpperis equal to
+                            return "It's a tie";            //computerSelection, return the statement
+                                                            //"It's a tie"
+                        }
+
+        
+        case 'PAPER':                        //If playerSelectionUpper is 'PAPER', then test for the following:
+            if(computerSelection==='ROCK'){            //If computerSelction is equal to 'ROCK', return the 
+                return "You win, Paper beats Rock";    //statement "You win, Paper beats Rock" 
+            
+            }else if(computerSelection==='SCISSORS'){        //Else, If computerSelection is equal to 'SCISSORS', 
+                    return "You Lose, Scissors beats Paper"; //return the statement "You Lose, Scissors beats Paper" 
+            
+                }else if(computerSelection==='PAPER'){    //Else, If playerSelectionUpper is equal to 'PAPER', return
+                            return "It's a tie;"         //the statement "It's a tie"
+                        }
+
+        
+        case 'SCISSORS':            //If playerSelectionUpper is "SCISSORS", then test for the following:
+            if(computerSelection==='PAPER'){             //If computerSelction is equal to 'PAPER', return the 
+                return "You win, Scissors beats Paper";  //statement "You win, Scissors beats Paper" 
+            
+            }else if(computerSelection==='ROCK'){           //Else, If computerSelection is equal to 'ROCK', 
+                    return "You Lose, Rock beats Scissors"; //return the statement "You Lose, Rock beats Scissors" 
+            
+                }else if(computerSelection==='SCISSORS'){   //Else, If playerSelectionUpper is equal to 'SCISSORS', return
+                        return "It's a tie;"                //the statement "It's a tie"
+                    }
+
+
+
+        default:                                              //If playerSelectionUpper matches none of the cases 
+            return "Invalid word entered by user. Try again"; //above, return the statement "Invalid word
+                                                              //entered by user. Try again."
+
+    }
+
+       /*return `User Play: ${playerSelectionUpper}, Computer Play: ${computerSelection}`;*/
+}
+
+    console.log(playRound("scissors",computerPlay()));

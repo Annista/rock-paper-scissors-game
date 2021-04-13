@@ -127,8 +127,8 @@ function playRound(playSelection, computerSelection){
                                                     //the computerScore by one
             }
 
-            console.log(`${roundResult} \nYour Score: ${userScore} \nComputer's Score: ${computerScore} \n`);
-            //Display the result of each round, along with each score so far
+            showRoundResults(roundResult, userScore, computerScore);
+            //Display the result of each round, along with each score so far (see line 165-168)
 
             //Find out if five rounds of rock paper scissors has been played so far
             if(rounds===5){
@@ -159,6 +159,13 @@ function playRound(playSelection, computerSelection){
        }
 
 
+    }
+
+
+    function showRoundResults(result, uScore, cScore){
+         //This function displays the result of each round, along with each score so far (see line 130)
+        console.log(`${result} \nYour Score: ${uScore} \nComputer's Score: ${cScore} \n`);
+       
     }
 
     console.log(game());

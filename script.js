@@ -139,25 +139,12 @@ function playRound(playSelection, computerSelection){
             
        }
 
-       console.log("That's been five rounds...\n");
+       console.log("That's been five rounds...");
     
        //At the end of 5 rounds of rock paper scissors, we need declare the winner of the overall game. To do
        //that, we will compare both scores (userScore and computerScore) to each other
-
-       if (userScore > computerScore){
-           console.log("Yay, you won the game!!");
-           //If userScore is greater than computerScore, display the message "Yay, you won the game!!"
-
-       }else if(userScore < computerScore){
-           console.log("Aw, you lost the game!!");
-            //Else, if userScore is less than computerScore, display the message "Aw, you lost the game!!"
-
-       }else{
-           console.log("The game is tied...");
-           //Else, if its none of the cases above, than that means only that both scores are equal. If so, 
-           //display the message "The game is tied..."
-       }
-
+       showGameResults(userScore, computerScore);
+       
 
     }
 
@@ -166,6 +153,27 @@ function playRound(playSelection, computerSelection){
          //This function displays the result of each round, along with each score so far (see line 130)
         console.log(`${result} \nYour Score: ${uScore} \nComputer's Score: ${cScore} \n`);
        
+    }
+
+    function showGameResults(uScore, cScore){  
+        //This function determines and displays the winner of the overall game
+
+        if (userScore > computerScore){
+            console.log("Yay, you won the game!!");
+            //If userScore is greater than computerScore, display the message "Yay, you won the game!!"
+ 
+        }else if(userScore < computerScore){
+            console.log("Aw, you lost the game!!");
+             //Else, if userScore is less than computerScore, display the message "Aw, you lost the game!!"
+ 
+        }else{
+            console.log("The game is tied...");
+            //Else, if its none of the cases above, than that means only that both scores are equal. If so, 
+            //display the message "The game is tied..."
+        }
+ 
+
+
     }
 
     console.log(game());

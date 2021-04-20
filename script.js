@@ -25,7 +25,7 @@ function computerPlay(){
 
 }
 
-//console.log(computerPlay());
+
 
 function playRound(playSelection, computerSelection){
    let playerSelectionUpper= playSelection.toUpperCase(); //Create the variable playerSelectionUpper
@@ -33,56 +33,63 @@ function playRound(playSelection, computerSelection){
         
     switch(playerSelectionUpper){ //Evaluate the variable playerSelectionUpper
 
-        case 'ROCK':                        //If playerSelectionUpper is 'ROCK', then test for the following:
-            if(computerSelection==='SCISSORS'){           //If computerSelection is 'SCISSORS', return the 
-                return "You Win, Rock beats Scissors";    //statement, "You win, Rock beats Scissors"
+        case 'ROCK':                        
+            if(computerSelection==='SCISSORS'){ 
+                console.log("You Win, Rock beats Scissors"); 
+                return "user";        
                 
-            }else if(computerSelection==='PAPER'){          //Else, If computerSelection is 'PAPER', return the 
-                    return "You Lose, Paper beats Rock";     //statement, "You lose, Paper beats Rock"
+            }else if(computerSelection==='PAPER'){           
+                    console.log("You Lose, Paper beats Rock");
+                    return "comp";  
                     
-                  }else if(computerSelection==='ROCK'){   //Else, If playerSelectionUpperis equal to
-                            return "It's a tie";            //computerSelection, return the statement
-                                                            //"It's a tie"
+                  }else if(computerSelection==='ROCK'){   
+                            console.log("It's a tie");     
+                            return "none";                 
                         }
 
         
-        case 'PAPER':                        //If playerSelectionUpper is 'PAPER', then test for the following:
-            if(computerSelection==='ROCK'){            //If computerSelction is equal to 'ROCK', return the 
-                 return "You Win, Paper beats Rock";    //statement "You win, Paper beats Rock" 
+        case 'PAPER':                        
+            if(computerSelection==='ROCK'){            
+                 console.log("You Win, Paper beats Rock");    
+                 return "user";
                  
-            }else if(computerSelection==='SCISSORS'){        //Else, If computerSelection is equal to 'SCISSORS', 
-                    return "You Lose, Scissors beats Paper"; //return the statement "You Lose, Scissors beats Paper" 
-                    
-                }else if(computerSelection==='PAPER'){    //Else, If playerSelectionUpper is equal to 'PAPER', return
-                            return "It's a tie";         //the statement "It's a tie"
+            }else if(computerSelection==='SCISSORS'){        
+                    console.log("You Lose, Scissors beats Paper"); 
+                    return "comp";
+
+                }else if(computerSelection==='PAPER'){    
+                            console.log("It's a tie");         
+                            return "none";
                         }
 
         
-        case 'SCISSORS':            //If playerSelectionUpper is "SCISSORS", then test for the following:
-            if(computerSelection==='PAPER'){             //If computerSelction is equal to 'PAPER', return the 
-                return "You Win, Scissors beats Paper";  //statement "You win, Scissors beats Paper" 
-                
-            }else if(computerSelection==='ROCK'){           //Else, If computerSelection is equal to 'ROCK', 
-                    return "You Lose, Rock beats Scissors"; //return the statement "You Lose, Rock beats Scissors" 
-                   
-                }else if(computerSelection==='SCISSORS'){   //Else, If playerSelectionUpper is equal to 'SCISSORS', return
-                        return "It's a tie";                //the statement "It's a tie"    
+        case 'SCISSORS':            
+            if(computerSelection==='PAPER'){             
+                console.log("You Win, Scissors beats Paper");  
+                return "user";
+
+            }else if(computerSelection==='ROCK'){            
+                    console.log("You Lose, Rock beats Scissors"); 
+                    return "comp";
+
+                }else if(computerSelection==='SCISSORS'){   
+                        console.log("It's a tie");                 
+                        return "none";
+
                     }
 
 
 
-        default:                                              //If playerSelectionUpper matches none of the cases 
-            return "Invalid word entered by user. Try again"; //above, return the statement "Invalid word
-                                                              //entered by user. Try again."
+        default:                                              
+            return "Invalid word entered by user. Try again"; 
+                                                              
 
     }
 
-       /*return `User Play: ${playerSelectionUpper}, Computer Play: ${computerSelection}`;*/
+      
 }
  
-    /*const  playerSelection= "scissors";
-    const computerSelection= computerPlay(); 
-    console.log(playRound(playerSelection, computerSelection));*/
+    
 
     function game(){
         let userScore=0; //Create a variable called userScore and assign 0 to it
@@ -99,41 +106,40 @@ function playRound(playSelection, computerSelection){
 
         let computerSelection; //Create a variable called computerSelection
 
-        let roundResult; //Create a variable called roundResult (that stores the result of each round)
+        let roundWinner; //Create a variable called roundWinner (that stores the winner of each round)
 
 
 
         while(keepPlaying){
 
-            ++rounds; //Increment rounds by one
+            ++rounds; 
 
-            playerSelection=prompt("Enter you play (either rock, paper, or scissors)");
-            //prompt the user to enter either rock, paper, or scissors and assign their response 
-            //to playerSelection
+            playerSelection=prompt("Enter your play (either rock, paper, or scissors)");
+            
 
             computerSelection=computerPlay();
-            //Get the computer's play by assigning a computerPlay() function call to computerSelection
+           
 
-            roundResult=playRound(playerSelection, computerSelection);
-            //Assign to roundResult a playRound() function call
+            roundWinner=playRound(playerSelection, computerSelection);
+            
 
 
-            //Evaluate roundResult to see who won the single round
-            if(roundResult.includes("Win")){  //If the string stored in roundResult includes the word "Win"
-                ++userScore;                 //that means that the user won so, increment userScore by one
+            
+            if(roundWinner==="user"){  
+                ++userScore;                 
 
-            }else if(roundResult.includes("Lose")){  //If the string stored in roundResult includes the word 
-                    ++computerScore;                //"Lose", that means that the computer won so, increment 
-                                                    //the computerScore by one
+            }else if(roundWinner==="comp"){  
+                    ++computerScore;                
+                                                    
             }
 
-            showRoundResults(roundResult, userScore, computerScore);
-            //Display the result of each round, along with each score so far (see line 165-168)
+           
+            
 
-            //Find out if five rounds of rock paper scissors has been played so far
+            
             if(rounds===5){
-                keepPlaying=false;//If rounds is equal to 5, ten assign false to keepPlaying (to tell the the 
-                                //program that the user should stop playing)
+                keepPlaying=false; 
+                               
             }
             
             
@@ -141,36 +147,36 @@ function playRound(playSelection, computerSelection){
 
        console.log("That's been five rounds...");
     
-       //At the end of 5 rounds of rock paper scissors, we need declare the winner of the overall game. To do
-       //that, we will compare both scores (userScore and computerScore) to each other
+       
        showGameResults(userScore, computerScore);
        
 
     }
 
 
-    function showRoundResults(result, uScore, cScore){
-         //This function displays the result of each round, along with each score so far (see line 130)
-        console.log(`${result} \nYour Score: ${uScore} \nComputer's Score: ${cScore} \n`);
+    function showScores(uScore, cScore){
+         
+        console.log(`Your Score: ${uScore} \nComputer's Score: ${cScore} \n`);
        
     }
 
     function showGameResults(uScore, cScore){  
-        //This function determines and displays the winner of the overall game
-
-        if (userScore > computerScore){
-            console.log("Yay, you won the game!!");
-            //If userScore is greater than computerScore, display the message "Yay, you won the game!!"
- 
-        }else if(userScore < computerScore){
-            console.log("Aw, you lost the game!!");
-             //Else, if userScore is less than computerScore, display the message "Aw, you lost the game!!"
+        
+        if (uScore > cScore){
+            console.log(`Yay, you won the game!!`);
+            
+            
+  
+        }else if(uScore < cScore){
+            console.log(`Aw, you lost the game!!`);
+             
  
         }else{
-            console.log("The game is tied...");
-            //Else, if its none of the cases above, than that means only that both scores are equal. If so, 
-            //display the message "The game is tied..."
+            console.log(`The game is tied...`);
+           
         }
+
+        showScores(uScore, cScore);
  
 
 

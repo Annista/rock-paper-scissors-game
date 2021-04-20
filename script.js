@@ -157,13 +157,13 @@ function playRound(playSelection, computerSelection){
     }
 
 
-    function showScores(uScore, cScore){
+    function showScores(uScore, cScore){ //Displays the scores of each player in the console
          
         console.log(`Your Score: ${uScore} \nComputer's Score: ${cScore} \n`);
        
     }
 
-    function showGameResults(uScore, cScore){  
+    function showGameResults(uScore, cScore){ //Displays the overall result of the game
         
         if (uScore > cScore){
             console.log(`Yay, you won the game!!`);

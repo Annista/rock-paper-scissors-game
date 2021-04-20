@@ -28,15 +28,16 @@ function computerPlay(){
 
 
 function playRound(playSelection, computerSelection){
-   let playerSelectionUpper= playSelection.toUpperCase(); //Create the variable playerSelectionUpper
-        //Assign to playerSelectionUpper the playerSelection parameter converted to UpperCase   
+   let playerSelectionUpper= playSelection.toUpperCase(); 
+        //whatever the user enters (which is then stored in playSeletion) is converted to uppercase, 
+        //thus making it case-insensitive.
         
-    switch(playerSelectionUpper){ //Evaluate the variable playerSelectionUpper
+    switch(playerSelectionUpper){ //Evaluating the variable playerSelectionUpper
 
         case 'ROCK':                        
             if(computerSelection==='SCISSORS'){ 
-                console.log("You Win, Rock beats Scissors"); 
-                return "user";        
+                console.log("You Win, Rock beats Scissors"); //Tells the user who won the round
+                return "user";  //These return statements identify the winner in each round      
                 
             }else if(computerSelection==='PAPER'){           
                     console.log("You Lose, Paper beats Rock");
@@ -81,7 +82,7 @@ function playRound(playSelection, computerSelection){
 
 
         default:                                              
-            return "Invalid word entered by user. Try again"; 
+            console.log("Invalid word entered by user. Try again"); 
                                                               
 
     }
@@ -92,35 +93,35 @@ function playRound(playSelection, computerSelection){
     
 
     function game(){
-        let userScore=0; //Create a variable called userScore and assign 0 to it
+        let userScore=0; 
 
-        let computerScore=0; //Create a variable called computerScore and assign 0 to it
+        let computerScore=0; 
 
-        let rounds=0;  //Create a variable called rounds (that stores how many rounds has been played) 
-                       //and assign 0 to it
+        let rounds=0;  //Variable that stores how many rounds has been played
+                      
 
-        let keepPlaying= true; //Create a variable called keepPlaying (that tells the program whether or 
-                               //not the user can keep playing) and assign true to it
+        let keepPlaying= true; //This variable tells the program whether or not the user can keep playing
 
-        let playerSelection; //Create a variable called playerSelection
+        let playerSelection; 
 
-        let computerSelection; //Create a variable called computerSelection
+        let computerSelection; 
 
-        let roundWinner; //Create a variable called roundWinner (that stores the winner of each round)
-
+        let roundWinner; //This variable stores the winner of each round
 
 
-        while(keepPlaying){
+        while(keepPlaying){//the iteration keeps going as long as kepPlaying is true
 
             ++rounds; 
 
             playerSelection=prompt("Enter your play (either rock, paper, or scissors)");
             
 
-            computerSelection=computerPlay();
+            computerSelection=computerPlay(); //function is called to get the computers play (see lines 1-26)
            
 
             roundWinner=playRound(playerSelection, computerSelection);
+            //function playRound() returns a string that says the winner of the round
+            //which is why the function call is assigned to 'roundWWinner'
             
 
 
@@ -139,6 +140,8 @@ function playRound(playSelection, computerSelection){
             
             if(rounds===5){
                 keepPlaying=false; 
+                //after 5 rounds we should stop playing, so the value 'false' is assigned to 
+                //keepPlaying, and when this happens, we break out of the while loop
                                
             }
             

@@ -2,24 +2,17 @@
 const mainDiv= document.querySelector("#main-div");
 const rockBtn= document.createElement("button");
 const paperBtn= document.createElement("button");
-const scissorsBtn= document.createElement("button");
+const scissorsBtn= document.createElement("button"); //Creating three buttons, one for each selection
 
 rockBtn.textContent="ROCK";
 paperBtn.textContent="PAPER";
 scissorsBtn.textContent="SCISSORS";
 
+rockBtn.setAttribute("data-play", "ROCK");
+paperBtn.setAttribute("data-play", "PAPER");
+scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to each button called data-play
 
 
-
-
-const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
-
-selectorBtn.forEach((button)=> {
-    button.style.margin= '10px';
-    button.classList.add("selector-button");
-    mainDiv.appendChild(button);
-
-    });
 
     
 
@@ -212,4 +205,18 @@ function playRound(playSelection, computerSelection){
 
     }
 
-    console.log(game());
+const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
+
+selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the mainDiv
+    button.style.margin= '10px';
+    button.classList.add("selector-button");
+
+    const userPlay= button.dataset.play;
+
+    button.addEventListener("click", ()=>playRound(userPlay, computerPlay()));
+   //Also, all buttons will have an event listener attached to them
+   //so that when clicked, a round will be played with their respective play against the computer's
+
+    mainDiv.appendChild(button);
+
+    });

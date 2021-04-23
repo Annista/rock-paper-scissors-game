@@ -1,3 +1,30 @@
+
+const mainDiv= document.querySelector("#main-div");
+const rockBtn= document.createElement("button");
+const paperBtn= document.createElement("button");
+const scissorsBtn= document.createElement("button");
+
+rockBtn.textContent="ROCK";
+paperBtn.textContent="PAPER";
+scissorsBtn.textContent="SCISSORS";
+
+
+
+
+
+const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
+
+selectorBtn.forEach((button)=> {
+    button.style.margin= '10px';
+    button.classList.add("selector-button");
+    mainDiv.appendChild(button);
+
+    });
+
+    
+
+
+
 function computerPlay(){
 
     

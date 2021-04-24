@@ -12,7 +12,7 @@ rockBtn.setAttribute("data-play", "ROCK");
 paperBtn.setAttribute("data-play", "PAPER");
 scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to each button called data-play
 
-
+const resultDiv= document.createElement("div");  //Creating a div to display the round results on the webpage
 
     
 
@@ -56,45 +56,45 @@ function playRound(playSelection, computerSelection){
 
         case 'ROCK':                        
             if(computerSelection==='SCISSORS'){ 
-                console.log("You Win, Rock beats Scissors"); //Tells the user who won the round
+                resultDiv.textContent= "You Win, Rock beats Scissors"; //Tells the user who won the round
                 return "user";  //These return statements identify the winner in each round      
                 
             }else if(computerSelection==='PAPER'){           
-                    console.log("You Lose, Paper beats Rock");
+                resultDiv.textContent= "You Lose, Paper beats Rock";
                     return "comp";  
                     
                   }else if(computerSelection==='ROCK'){   
-                            console.log("It's a tie");     
+                    resultDiv.textContent= "It's a tie";     
                             return "none";                 
                         }
 
         
         case 'PAPER':                        
             if(computerSelection==='ROCK'){            
-                 console.log("You Win, Paper beats Rock");    
+                resultDiv.textContent= "You Win, Paper beats Rock";    
                  return "user";
                  
             }else if(computerSelection==='SCISSORS'){        
-                    console.log("You Lose, Scissors beats Paper"); 
+                resultDiv.textContent= "You Lose, Scissors beats Paper"; 
                     return "comp";
 
                 }else if(computerSelection==='PAPER'){    
-                            console.log("It's a tie");         
+                    resultDiv.textContent= "It's a tie";         
                             return "none";
                         }
 
         
         case 'SCISSORS':            
             if(computerSelection==='PAPER'){             
-                console.log("You Win, Scissors beats Paper");  
+                resultDiv.textContent= "You Win, Scissors beats Paper";  
                 return "user";
 
             }else if(computerSelection==='ROCK'){            
-                    console.log("You Lose, Rock beats Scissors"); 
+                resultDiv.textContent= "You Lose, Rock beats Scissors"; 
                     return "comp";
 
                 }else if(computerSelection==='SCISSORS'){   
-                        console.log("It's a tie");                 
+                    resultDiv.textContent= "It's a tie";                 
                         return "none";
 
                     }
@@ -220,3 +220,5 @@ selectorBtn.forEach((button)=> { //All three button will be styled, share a clas
     mainDiv.appendChild(button);
 
     });
+
+    mainDiv.appendChild(resultDiv);

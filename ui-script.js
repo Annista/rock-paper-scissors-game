@@ -14,7 +14,22 @@ scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to eac
 
 const resultDiv= document.createElement("div");  //Creating a div to display the round results on the webpage
 
+const scoreDiv= document.createElement("div");  //Creating a div to display the running score on the webpage
+
+const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
     
+
+
+
+selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the mainDiv
+    button.style.margin= '10px';
+    button.classList.add("selector-button");
+
+    mainDiv.appendChild(button);
+
+    });
+
+
 
 
 
@@ -112,66 +127,56 @@ function playRound(playSelection, computerSelection){
  
     
 
-    function game(){
-        let userScore=0; 
+    function game(play){
+       
+            
+        
+                const playerSelection= play;
+                const computerSelection=computerPlay(); //function is called to get the computers play (see lines 1-26)
 
-        let computerScore=0; 
+                const rWinner= playRound(playerSelection, computerSelection);
+                //function playRound() returns a string that says the winner of the round
+                //which is why the function call is assigned to 'roundWWinner'
 
-        let rounds=0;  //Variable that stores how many rounds has been played
-                      
+                return rWinner;
 
-        let keepPlaying= true; //This variable tells the program whether or not the user can keep playing
+                
 
-        let playerSelection; 
+                
 
-        let computerSelection; 
+                
 
-        let roundWinner; //This variable stores the winner of each round
+          
+            //when the buttons are clicked, a round will be played with their respective play 
+            //against the computer's. Whoever wins the round gets a point
 
-
-        while(keepPlaying){//the iteration keeps going as long as kepPlaying is true
-
-            ++rounds; 
-
-            playerSelection=prompt("Enter your play (either rock, paper, or scissors)");
             
 
-            computerSelection=computerPlay(); //function is called to get the computers play (see lines 1-26)
-           
-
-            roundWinner=playRound(playerSelection, computerSelection);
-            //function playRound() returns a string that says the winner of the round
-            //which is why the function call is assigned to 'roundWWinner'
-            
-
-
-            
-            if(roundWinner==="user"){  
-                ++userScore;                 
-
-            }else if(roundWinner==="comp"){  
-                    ++computerScore;                
-                                                    
-            }
 
            
             
 
             
-            if(rounds===5){
+           
+
+           
+         
+
+            
+            /*if(rounds===5){
                 keepPlaying=false; 
                 //after 5 rounds we should stop playing, so the value 'false' is assigned to 
                 //keepPlaying, and when this happens, we break out of the while loop
                                
-            }
+            }*/
             
             
-       }
+       //}
 
-       console.log("That's been five rounds...");
+       //console.log("That's been five rounds...");
     
        
-       showGameResults(userScore, computerScore);
+       //showGameResults(userScore, computerScore);
        
 
     }
@@ -179,7 +184,7 @@ function playRound(playSelection, computerSelection){
 
     function showScores(uScore, cScore){ //Displays the scores of each player in the console
          
-        console.log(`Your Score: ${uScore} \nComputer's Score: ${cScore} \n`);
+        scoreDiv.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
        
     }
 
@@ -199,26 +204,61 @@ function playRound(playSelection, computerSelection){
            
         }
 
-        showScores(uScore, cScore);
+        console.log(`Your Score: ${uScore} \nComputer's Score: ${cScore} \n`);
  
 
 
     }
 
-const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
+    function endGame(uScore, cScore, ){
+        console.log("That's been five rounds...");
+        showGameResults(uScore, cScore);
+        
+        
 
-selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the mainDiv
-    button.style.margin= '10px';
-    button.classList.add("selector-button");
+    }
 
-    const userPlay= button.dataset.play;
+    function startGame(){
 
-    button.addEventListener("click", ()=>playRound(userPlay, computerPlay()));
-   //Also, all buttons will have an event listener attached to them
-   //so that when clicked, a round will be played with their respective play against the computer's
+        let userScore =0;
+        let computerScore =0;
+        
+        
 
-    mainDiv.appendChild(button);
+        selectorBtn.forEach((button)=>{
+            const userPlay= button.dataset.play;
+            button.addEventListener("click", ()=>{
+            
 
-    });
+                roundWinner= game(userPlay);
+
+                 if(roundWinner==="user"){  
+                    ++userScore;                 
+
+                }else if(roundWinner==="comp"){  
+                    ++computerScore;                
+                                                    
+                }
+
+                showScores(userScore, computerScore) ;
+
+                if (userScore===5 || computerScore===5){
+                    endGame(userScore, computerScore);
+
+                }
+
+            
+
+            });
+        });
+    }
+
+
+
 
     mainDiv.appendChild(resultDiv);
+    mainDiv.appendChild(scoreDiv);
+
+
+
+    startGame();

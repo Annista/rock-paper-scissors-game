@@ -13,8 +13,9 @@ paperBtn.setAttribute("data-play", "PAPER");
 scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to each button called data-play
 
 const resultDiv= document.createElement("div");  //Creating a div to display the round results on the webpage
+const resultText= document.createElement("p"); 
 
-const scoreDiv= document.createElement("div");  //Creating a div to display the running score on the webpage
+const scoresText= document.createElement("p");  //Creating a div to display the running score on the webpage
 
 const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
     
@@ -80,45 +81,45 @@ function playRound(playSelection, computerSelection){
 
         case 'ROCK':                        
             if(computerSelection==='SCISSORS'){ 
-                resultDiv.textContent= "You Win, Rock beats Scissors"; //Tells the user who won the round
+                resultText.textContent= "You Win, Rock beats Scissors"; //Tells the user who won the round
                 return "user";  //These return statements identify the winner in each round      
                 
             }else if(computerSelection==='PAPER'){           
-                resultDiv.textContent= "You Lose, Paper beats Rock";
+                resultText.textContent= "You Lose, Paper beats Rock";
                     return "comp";  
                     
                   }else if(computerSelection==='ROCK'){   
-                    resultDiv.textContent= "It's a tie";     
+                    resultText.textContent= "It's a tie";     
                             return "none";                 
                         }
 
         
         case 'PAPER':                        
             if(computerSelection==='ROCK'){            
-                resultDiv.textContent= "You Win, Paper beats Rock";    
+                resultText.textContent= "You Win, Paper beats Rock";    
                  return "user";
                  
             }else if(computerSelection==='SCISSORS'){        
-                resultDiv.textContent= "You Lose, Scissors beats Paper"; 
+                resultText.textContent= "You Lose, Scissors beats Paper"; 
                     return "comp";
 
                 }else if(computerSelection==='PAPER'){    
-                    resultDiv.textContent= "It's a tie";         
+                    resultText.textContent= "It's a tie";         
                             return "none";
                         }
 
         
         case 'SCISSORS':            
             if(computerSelection==='PAPER'){             
-                resultDiv.textContent= "You Win, Scissors beats Paper";  
+                resultText.textContent= "You Win, Scissors beats Paper";  
                 return "user";
 
             }else if(computerSelection==='ROCK'){            
-                resultDiv.textContent= "You Lose, Rock beats Scissors"; 
+                resultText.textContent= "You Lose, Rock beats Scissors"; 
                     return "comp";
 
                 }else if(computerSelection==='SCISSORS'){   
-                    resultDiv.textContent= "It's a tie";                 
+                    resultText.textContent= "It's a tie";                 
                         return "none";
 
                     }
@@ -136,96 +137,59 @@ function playRound(playSelection, computerSelection){
  
     
 
-    function game(play){
-       
+    function playAgainstComputer(uplay){
             
         
-                const playerSelection= play;
-                const computerSelection=computerPlay(); //function is called to get the computers play (see lines 1-26)
+                const playerSelection= uplay;
+                const computerSelection=computerPlay(); 
+                //function is called to get the computers play (see lines 1-26)
 
                 const rWinner= playRound(playerSelection, computerSelection);
                 //function playRound() returns a string that says the winner of the round
-                //which is why the function call is assigned to 'roundWWinner'
+                //which is why the function call is assigned to 'rWinner'
 
                 return rWinner;
-
-                
-
-                
-
-                
-
-          
-            //when the buttons are clicked, a round will be played with their respective play 
-            //against the computer's. Whoever wins the round gets a point
-
-            
-
-
-           
-            
-
-            
-           
-
-           
-         
-
-            
-            /*if(rounds===5){
-                keepPlaying=false; 
-                //after 5 rounds we should stop playing, so the value 'false' is assigned to 
-                //keepPlaying, and when this happens, we break out of the while loop
-                               
-            }*/
-            
-            
-       //}
-
-       //console.log("That's been five rounds...");
-    
-       
-       //showGameResults(userScore, computerScore);
-       
 
     }
 
 
     function showScores(uScore, cScore){ //Displays the scores of each player in the console
          
-        scoreDiv.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
+        scoresText.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
        
     }
 
     function showGameResults(uScore, cScore){ //Displays the overall result of the game
         const finalResultsDiv= document.createElement("div");
-        const finalScoresDiv= document.createElement("div");
+        const finalResultsText= document.createElement("p");
+        const finalScoresText= document.createElement("p");
         
         if (uScore > cScore){
-            finalResultsDiv.textContent=`Yay, you won the game!!`;
+            finalResultsText.textContent=`Yay, you won the game!!`;
             
             
   
         }else if(uScore < cScore){
-            finalResultsDiv.textContent=`Aw, you lost the game!!`;
+            finalResultsText.textContent=`Aw, you lost the game!!`;
              
  
         }else{
-            finalResultsDiv.textContent=`The game is tied...`;
+            finalResultsText.textContent=`The game is tied...`;
            
         }
 
-        finalScoresDiv.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
+        finalScoresText.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
 
-        mainDiv.appendChild(finalResultsDiv);
-        mainDiv.appendChild(finalScoresDiv);
+        finalResultsDiv.appendChild(finalResultsText);
+        finalResultsDiv.appendChild(finalScoresText);
+        mainDiv.appendChild( finalResultsDiv);
  
 
 
     }
 
     function endGame(uScore, cScore, ){
-        console.log("That's been five rounds...");
+        
         showGameResults(uScore, cScore);
         const sButtons= document.querySelectorAll(".selector-button");
 
@@ -233,12 +197,9 @@ function playRound(playSelection, computerSelection){
             mainDiv.removeChild(button);
         });
 
-        //console.log(checkForButtons());
+       
 
-        playAgain();
-
-        
-        
+        playAgain();    
         
 
     }
@@ -263,15 +224,24 @@ function playRound(playSelection, computerSelection){
         let userScore =0;
         let computerScore =0;
         
+        resultDiv.appendChild(scoresText);
+        resultDiv.appendChild(resultText);
+       
+        mainDiv.appendChild(resultDiv);
         
+
+        
+        mainDiv.appendChild(resultText);
 
         selectorBtn.forEach((button)=>{
             const userPlay= button.dataset.play;
+
             button.addEventListener("click", ()=>{
-            
+               
 
-                roundWinner= game(userPlay);
-
+                roundWinner= playAgainstComputer(userPlay);
+                //when the buttons are clicked, a round will be played with their respective play 
+                //against the computer's. Whoever wins the round gets a point
                  if(roundWinner==="user"){  
                     ++userScore;                 
 
@@ -293,11 +263,6 @@ function playRound(playSelection, computerSelection){
         });
     }
 
-
-
-
-    mainDiv.appendChild(resultDiv);
-    mainDiv.appendChild(scoreDiv);
 
 
 

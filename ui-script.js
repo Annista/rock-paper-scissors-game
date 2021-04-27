@@ -29,6 +29,15 @@ selectorBtn.forEach((button)=> { //All three button will be styled, share a clas
 
     });
 
+    function checkForButtons(){
+
+    let selectBtnList= document.getElementsByClassName("selector-button");
+
+        return (selectBtnList.length > 0);
+
+
+    }
+
 
 
 
@@ -189,22 +198,27 @@ function playRound(playSelection, computerSelection){
     }
 
     function showGameResults(uScore, cScore){ //Displays the overall result of the game
+        const finalResultsDiv= document.createElement("div");
+        const finalScoresDiv= document.createElement("div");
         
         if (uScore > cScore){
-            console.log(`Yay, you won the game!!`);
+            finalResultsDiv.textContent=`Yay, you won the game!!`;
             
             
   
         }else if(uScore < cScore){
-            console.log(`Aw, you lost the game!!`);
+            finalResultsDiv.textContent=`Aw, you lost the game!!`;
              
  
         }else{
-            console.log(`The game is tied...`);
+            finalResultsDiv.textContent=`The game is tied...`;
            
         }
 
-        console.log(`Your Score: ${uScore} \nComputer's Score: ${cScore} \n`);
+        finalScoresDiv.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
+
+        mainDiv.appendChild(finalResultsDiv);
+        mainDiv.appendChild(finalScoresDiv);
  
 
 
@@ -213,9 +227,35 @@ function playRound(playSelection, computerSelection){
     function endGame(uScore, cScore, ){
         console.log("That's been five rounds...");
         showGameResults(uScore, cScore);
+        const sButtons= document.querySelectorAll(".selector-button");
+
+       sButtons.forEach((button)=>{
+            mainDiv.removeChild(button);
+        });
+
+        //console.log(checkForButtons());
+
+        playAgain();
+
+        
         
         
 
+    }
+
+    function playAgain(){
+
+        const playAgainDiv= document.createElement("div");
+        
+        const playAgainButton=document.createElement("button");
+       
+        playAgainButton.textContent= "play again";
+
+        playAgainButton.addEventListener("click", ()=>window.location.reload());
+
+       
+        playAgainDiv.appendChild(playAgainButton);
+        mainDiv.appendChild(playAgainDiv);
     }
 
     function startGame(){

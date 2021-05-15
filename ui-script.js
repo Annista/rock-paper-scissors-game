@@ -12,31 +12,36 @@ rockBtn.setAttribute("data-play", "ROCK");
 paperBtn.setAttribute("data-play", "PAPER");
 scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to each button called data-play
 
-const resultDiv= document.createElement("div");  //Creating a div to display the round results on the webpage
+const selectorBtn= [rockBtn, paperBtn, scissorsBtn];//placing the buttons in an array so that they can be 
+                                                    //manipulated in an iteration, which requires less code
+                                                    //than doing so individually
+
+const resultDiv= document.createElement("div");  //This div will contain roundScoreDiv shown below
 resultDiv.classList.add("body-text");
 const resultText= document.createElement("p"); 
 resultDiv.setAttribute("id", "result-div");
 
 
-const roundScoreDiv= document.createElement("div");
+const roundScoreDiv= document.createElement("div");  //This div will contain playerScoreDiv and compScoreDiv
+roundScoreDiv.setAttribute("id", "round-score-div"); //shown below
+roundScoreDiv.classList.add("body-text"); 
 
-const playerScoreDiv= document.createElement("div");  //Creating a div to display the running score on the webpage
-const compScoreDiv= document.createElement("div");
+const playerScoreDiv= document.createElement("div");  //Creating divs to contain the scores text 
+const compScoreDiv= document.createElement("div");    //at lines 29-32
+playerScoreDiv.setAttribute("id", "player-score-div");
+compScoreDiv.setAttribute("id", "computer-score-div");
  
-const playerScoreLabel= document.createElement("p");
-const compScoreLabel= document.createElement("p");
+const playerScoreLabel= document.createElement("p"); //These p elements are for displaying the scores at a given
+const compScoreLabel= document.createElement("p");  //time
 const compScoreText= document.createElement("p");
 const playerScoreText= document.createElement("p");
 
-roundScoreDiv.setAttribute("id", "round-score-div");
-playerScoreDiv.setAttribute("id", "player-score-div");
-compScoreDiv.setAttribute("id", "computer-score-div");
 /*playerScoreDiv.classList.add("");
 compScoreDiv.classList.add("");*/
-roundScoreDiv.classList.add("body-text");
 
 
-const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
+
+
     
 
 
@@ -208,10 +213,10 @@ function playRound(playSelection, computerSelection){
            
         }
 
-        finalScoresText.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
+        //finalScoresText.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
 
         finalResultsDiv.appendChild(finalResultsText);
-        finalResultsDiv.appendChild(finalScoresText);
+        //finalResultsDiv.appendChild(finalScoresText);
         mainDiv.appendChild( finalResultsDiv);
  
 
@@ -239,6 +244,7 @@ function playRound(playSelection, computerSelection){
         const playAgainDiv= document.createElement("div");
         
         const playAgainButton=document.createElement("button");
+        playAgainButton.setAttribute("id", "play-again-button");
        
         playAgainButton.textContent= "play again";
 

@@ -13,9 +13,28 @@ paperBtn.setAttribute("data-play", "PAPER");
 scissorsBtn.setAttribute("data-play", "SCISSORS"); //Add a data attribute to each button called data-play
 
 const resultDiv= document.createElement("div");  //Creating a div to display the round results on the webpage
+resultDiv.classList.add("body-text");
 const resultText= document.createElement("p"); 
+resultDiv.setAttribute("id", "result-div");
 
-const scoresText= document.createElement("p");  //Creating a div to display the running score on the webpage
+
+const roundScoreDiv= document.createElement("div");
+
+const playerScoreDiv= document.createElement("div");  //Creating a div to display the running score on the webpage
+const compScoreDiv= document.createElement("div");
+ 
+const playerScoreLabel= document.createElement("p");
+const compScoreLabel= document.createElement("p");
+const compScoreText= document.createElement("p");
+const playerScoreText= document.createElement("p");
+
+roundScoreDiv.setAttribute("id", "round-score-div");
+playerScoreDiv.setAttribute("id", "player-score-div");
+compScoreDiv.setAttribute("id", "computer-score-div");
+/*playerScoreDiv.classList.add("");
+compScoreDiv.classList.add("");*/
+roundScoreDiv.classList.add("body-text");
+
 
 const selectorBtn= [rockBtn, paperBtn, scissorsBtn];
     
@@ -154,8 +173,17 @@ function playRound(playSelection, computerSelection){
 
 
     function showScores(uScore, cScore){ //Displays the scores of each player in the console
-         
-        scoresText.textContent= `Your Score: ${uScore} \nComputer's Score: ${cScore} \n`;
+
+      
+        playerScoreLabel.textContent= "Your Score";
+        compScoreLabel.textContent= "Computer's Score";
+
+        playerScoreText.textContent= `${uScore}`;
+        compScoreText.textContent= `${cScore}`;
+
+       
+
+
        
     }
 
@@ -163,6 +191,8 @@ function playRound(playSelection, computerSelection){
         const finalResultsDiv= document.createElement("div");
         const finalResultsText= document.createElement("p");
         const finalScoresText= document.createElement("p");
+
+        finalResultsDiv.classList.add("body-text");
         
         if (uScore > cScore){
             finalResultsText.textContent=`Yay, you won the game!!`;
@@ -223,15 +253,28 @@ function playRound(playSelection, computerSelection){
 
         let userScore =0;
         let computerScore =0;
+
+        resultDiv.appendChild(resultText);  //Why!!!!!!
+
+        playerScoreDiv.appendChild(playerScoreLabel);
+        playerScoreDiv.appendChild(playerScoreText);
+        compScoreDiv.appendChild(compScoreLabel);
+        compScoreDiv.appendChild(compScoreText);
+
+        roundScoreDiv.appendChild(playerScoreDiv);
+        roundScoreDiv.appendChild(compScoreDiv);
+
         
-        resultDiv.appendChild(scoresText);
-        resultDiv.appendChild(resultText);
+        
+        resultDiv.appendChild(roundScoreDiv);
+        
+        
        
         mainDiv.appendChild(resultDiv);
         
 
         
-        mainDiv.appendChild(resultText);
+       
 
         selectorBtn.forEach((button)=>{
             const userPlay= button.dataset.play;

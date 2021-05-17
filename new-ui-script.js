@@ -1,5 +1,9 @@
 
 const mainDiv= document.querySelector("#main-div");
+
+const selectorButtonsDiv= document.createElement("div");
+selectorButtonsDiv.setAttribute("id", "selector-buttons-div");
+
 const rockBtn= document.createElement("button");
 const paperBtn= document.createElement("button");
 const scissorsBtn= document.createElement("button"); //Creating three buttons, one for each selection
@@ -16,10 +20,26 @@ const selectorBtn= [rockBtn, paperBtn, scissorsBtn];//placing the buttons in an 
                                                     //manipulated in an iteration, which requires less code
                                                     //than doing so individually
 
-const resultDiv= document.createElement("div");  //This div will contain roundScoreDiv shown below
-resultDiv.classList.add("body-text");
+const roundDiv= document.createElement("div");  //This div will contain roundScoreDiv shown below
+roundDiv.classList.add("body-text");
+roundDiv.setAttribute("id", "round-div");
+
+
+const playsDiv= document.createElement("div");
+playsDiv.setAttribute("id", "plays-div");
+const userPlayDiv= document.createElement("div");
+userPlayDiv.setAttribute("id", "user-play-div");
+const userPlayText= document.createElement("span");
+userPlayText.classList.add("body-text");
+const compPlayDiv= document.createElement("div");
+compPlayDiv.setAttribute("id", "comp-play-div");
+const compPlayText= document.createElement("span");
+compPlayText.classList.add("body-text");
+
+const resultTextDiv= document.createElement("div"); //This div will contain the (round) result text shown below
 const resultText= document.createElement("p"); 
-resultDiv.setAttribute("id", "result-div");
+resultTextDiv.setAttribute("id", "result-text-div");
+
 
 
 const roundScoreDiv= document.createElement("div");  //This div will contain playerScoreDiv and compScoreDiv
@@ -46,12 +66,12 @@ compScoreDiv.classList.add("");*/
 
 
 
-selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the mainDiv
-    button.style.margin= '10px';
+selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the 
+    button.style.margin= '10px'; //selectorButtonsDiv
     button.classList.add("selector-button");
+    selectorButtonsDiv.appendChild(button);
 
-    mainDiv.appendChild(button);
-
+    
     });
 
     function checkForButtons(){
@@ -232,11 +252,13 @@ function playRound(playSelection, computerSelection){
     function endGame(uScore, cScore, ){
         
         showGameResults(uScore, cScore);
-        const sButtons= document.querySelectorAll(".selector-button");
+        /*const sButtons= document.querySelectorAll(".selector-button");
 
        sButtons.forEach((button)=>{
             mainDiv.removeChild(button);
-        });
+        });*/
+
+        mainDiv.removeChild(selectorButtonsDiv);
 
        
 
@@ -266,7 +288,15 @@ function playRound(playSelection, computerSelection){
         let userScore =0;
         let computerScore =0;
 
-        resultDiv.appendChild(resultText);  //Why!!!!!!
+        userPlayDiv.appendChild(userPlayText);
+        compPlayDiv.appendChild(compPlayText);
+
+        playsDiv.appendChild(userPlayDiv);
+        playsDiv.appendChild(compPlayDiv);
+        roundDiv.appendChild(playsDiv);
+
+        resultTextDiv.appendChild(resultText);
+        roundDiv.appendChild(resultTextDiv);  
 
         playerScoreDiv.appendChild(playerScoreLabel);
         playerScoreDiv.appendChild(playerScoreText);
@@ -278,11 +308,14 @@ function playRound(playSelection, computerSelection){
 
         
         
-        resultDiv.appendChild(roundScoreDiv);
+        roundDiv.appendChild(roundScoreDiv);
         
         
        
-        mainDiv.appendChild(resultDiv);
+        mainDiv.appendChild(roundDiv);
+
+        mainDiv.appendChild(selectorButtonsDiv);
+
         
 
         
@@ -297,6 +330,9 @@ function playRound(playSelection, computerSelection){
                 roundResults= playAgainstComputer(userPlay);
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
+
+                userPlayText.textContent=roundResults[0];
+                compPlayText.textContent=roundResults[1];
 
                  if(roundResults[2]==="user"){  //the string stored in this array at index 2 tells the winner
                     ++userScore;                 //of the round  (see lines 175, 181)

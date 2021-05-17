@@ -1,0 +1,134 @@
+body, html{
+    height: 100%;
+}
+
+
+.bg-img{
+    /*background-image: url(https://www.technocrazed.com/wp-content/uploads/2015/12/Wood-Wallpaper-Background-21.jpg);*/
+    background-image: url(https://jumbotech.net/wp-content/uploads/2016/03/7-Best-Pattern-of-Background-Images-for-Websites-1-Dark-Wood.jpg);
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+#main-div{
+    
+    
+    background-color: rgba(0,0,0, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+
+}
+
+#game-heading{
+    color:  #8f7648;
+    opacity: 1.0;
+    font-size: 37px;
+}
+
+.intro{
+    color:  #F5DEB3;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button{
+    border-radius: 10px;
+    padding: 10px;
+    color: darkgray;
+    font-weight: bolder;
+}
+
+#selector-buttons-div{
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.selector-button{
+    background-color: #8f2626;
+    border: 1px solid #4e1818;
+    
+    
+}
+
+#play-again-button{
+    background-color: #2e8b4a;
+    border: 1px solid #1b502b;
+    
+}
+
+.body-text{
+    color: darkgray;
+}
+
+#round-div{
+    border: 1px solid white;
+    margin: 10px;
+    padding: 20px;
+}
+
+#plays-div{
+    display: flex;
+    border: 1px solid white; 
+    padding: 20px;
+    justify-content: space-around;
+}
+
+#user-play-div{
+    border: 1px solid white; 
+    padding: 20px;
+}
+
+#comp-play-div{
+    border: 1px solid white; 
+    padding: 20px;
+}
+
+
+#result-text-div{
+    border: 1px solid white;
+    margin: 10px;
+    padding: 0px 10px 0px 12px;
+}
+
+#round-score-div{
+    display: flex;  
+    border: 1px solid white;
+    padding: 20px;
+    justify-content: center;
+
+ 
+}
+
+#player-score-div{
+    
+    border: 1px solid white;
+    padding: 3px 30px;
+    margin: 10px;
+}
+
+#computer-score-div{
+    
+    border: 1px solid white;
+    padding: 3px 30px;
+    margin: 10px;
+}
+
+
+

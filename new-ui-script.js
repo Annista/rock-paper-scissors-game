@@ -163,7 +163,7 @@ function playRound(playSelection, computerSelection){
 
     function playAgainstComputer(uplay){
             
-        
+                let roundInfo;
                 const playerSelection= uplay;
                 const computerSelection=computerPlay(); 
                 //function is called to get the computers play (see lines 1-26)
@@ -172,8 +172,14 @@ function playRound(playSelection, computerSelection){
                 //function playRound() returns a string that says the winner of the round
                 //which is why the function call is assigned to 'rWinner'
 
-                return rWinner;
+                roundInfo= [playerSelection, computerSelection, rWinner];
+                //This array stores information about the game round, namely, the person's play, the computer's
+                //play, and the winner of the round
 
+                
+
+                return roundInfo; //The third item in this array will be evaluated in the startGame() function
+                                //see lines 301- 305
     }
 
 
@@ -288,13 +294,14 @@ function playRound(playSelection, computerSelection){
             button.addEventListener("click", ()=>{
                
 
-                roundWinner= playAgainstComputer(userPlay);
+                roundResults= playAgainstComputer(userPlay);
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
-                 if(roundWinner==="user"){  
-                    ++userScore;                 
 
-                }else if(roundWinner==="comp"){  
+                 if(roundResults[2]==="user"){  //the string stored in this array at index 2 tells the winner
+                    ++userScore;                 //of the round  (see lines 175, 181)
+
+                }else if(roundResults[2]==="comp"){  
                     ++computerScore;                
                                                     
                 }

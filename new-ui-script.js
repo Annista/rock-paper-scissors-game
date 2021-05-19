@@ -53,8 +53,11 @@ compScoreDiv.setAttribute("id", "computer-score-div");
  
 const playerScoreLabel= document.createElement("p"); //These p elements are for displaying the scores at a given
 const compScoreLabel= document.createElement("p");  //time
+playerScoreLabel.textContent= "Your Score";
+compScoreLabel.textContent= "Computer's Score";
 const compScoreText= document.createElement("p");
 const playerScoreText= document.createElement("p");
+
 
 /*playerScoreDiv.classList.add("");
 compScoreDiv.classList.add("");*/
@@ -73,6 +76,8 @@ selectorBtn.forEach((button)=> { //All three button will be styled, share a clas
 
     
     });
+
+    let resultString;
 
     function checkForButtons(){
 
@@ -125,45 +130,45 @@ function playRound(playSelection, computerSelection){
 
         case 'ROCK':                        
             if(computerSelection==='SCISSORS'){ 
-                resultText.textContent= "You Win, Rock beats Scissors"; //Tells the user who won the round
+                resultString= "You Win, Rock beats Scissors"; //Tells the user who won the round
                 return "user";  //These return statements identify the winner in each round      
                 
             }else if(computerSelection==='PAPER'){           
-                resultText.textContent= "You Lose, Paper beats Rock";
+                resultString= "You Lose, Paper beats Rock";
                     return "comp";  
                     
                   }else if(computerSelection==='ROCK'){   
-                    resultText.textContent= "It's a tie";     
+                    resultString= "It's a tie";     
                             return "none";                 
                         }
 
         
         case 'PAPER':                        
             if(computerSelection==='ROCK'){            
-                resultText.textContent= "You Win, Paper beats Rock";    
+                resultString= "You Win, Paper beats Rock";    
                  return "user";
                  
             }else if(computerSelection==='SCISSORS'){        
-                resultText.textContent= "You Lose, Scissors beats Paper"; 
+                resultString= "You Lose, Scissors beats Paper"; 
                     return "comp";
 
                 }else if(computerSelection==='PAPER'){    
-                    resultText.textContent= "It's a tie";         
+                    resultString= "It's a tie";         
                             return "none";
                         }
 
         
         case 'SCISSORS':            
             if(computerSelection==='PAPER'){             
-                resultText.textContent= "You Win, Scissors beats Paper";  
+                resultString= "You Win, Scissors beats Paper";  
                 return "user";
 
             }else if(computerSelection==='ROCK'){            
-                resultText.textContent= "You Lose, Rock beats Scissors"; 
+                resultString= "You Lose, Rock beats Scissors"; 
                     return "comp";
 
                 }else if(computerSelection==='SCISSORS'){   
-                    resultText.textContent= "It's a tie";                 
+                    resultString= "It's a tie";                 
                         return "none";
 
                     }
@@ -206,8 +211,7 @@ function playRound(playSelection, computerSelection){
     function showScores(uScore, cScore){ //Displays the scores of each player in the console
 
       
-        playerScoreLabel.textContent= "Your Score";
-        compScoreLabel.textContent= "Computer's Score";
+       
 
         playerScoreText.textContent= `${uScore}`;
         compScoreText.textContent= `${cScore}`;
@@ -249,18 +253,9 @@ function playRound(playSelection, computerSelection){
 
     }
 
-    function endGame(uScore, cScore, ){
+    function endGame(uScore, cScore){
         
         showGameResults(uScore, cScore);
-        /*const sButtons= document.querySelectorAll(".selector-button");
-
-       sButtons.forEach((button)=>{
-            mainDiv.removeChild(button);
-        });*/
-
-        mainDiv.removeChild(selectorButtonsDiv);
-
-       
 
         playAgain();    
         
@@ -298,6 +293,9 @@ function playRound(playSelection, computerSelection){
         resultTextDiv.appendChild(resultText);
         roundDiv.appendChild(resultTextDiv);  
 
+        playerScoreText.textContent="0";
+        compScoreText.textContent="0";
+
         playerScoreDiv.appendChild(playerScoreLabel);
         playerScoreDiv.appendChild(playerScoreText);
         compScoreDiv.appendChild(compScoreLabel);
@@ -326,13 +324,27 @@ function playRound(playSelection, computerSelection){
 
             button.addEventListener("click", ()=>{
                
+                mainDiv.removeChild(selectorButtonsDiv);
 
                 roundResults= playAgainstComputer(userPlay);
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
 
-                userPlayText.textContent=roundResults[0];
-                compPlayText.textContent=roundResults[1];
+                setTimeout(()=>{
+                    userPlayText.textContent=roundResults[0];
+                }, 1000);
+
+                setTimeout(()=>{
+                    compPlayText.textContent=roundResults[1];
+                }, 2000);
+
+                setTimeout(()=>{
+                   resultText.textContent=resultString;
+                }, 3000);
+
+
+                
+               
 
                  if(roundResults[2]==="user"){  //the string stored in this array at index 2 tells the winner
                     ++userScore;                 //of the round  (see lines 175, 181)
@@ -342,12 +354,39 @@ function playRound(playSelection, computerSelection){
                                                     
                 }
 
-                showScores(userScore, computerScore) ;
+                setTimeout(()=>{
+                    showScores(userScore, computerScore) ;
+                }, 4000);
+                
 
-                if (userScore===5 || computerScore===5){
-                    endGame(userScore, computerScore);
+                
+                setTimeout(()=>{
+                    userPlayText.textContent=""; 
+                }, 5000);
 
-                }
+               
+                setTimeout(()=>{
+                    compPlayText.textContent="";
+                }, 5000);
+                
+                
+                setTimeout(()=>{
+                    resultText.textContent="";
+                }, 5000);
+
+              
+
+               
+
+                setTimeout(()=>{
+                    if (userScore===5 || computerScore===5){
+                        endGame(userScore, computerScore);
+    
+                    }else{
+                        mainDiv.appendChild(selectorButtonsDiv); 
+                    }
+                }, 5000);
+                
 
             
 

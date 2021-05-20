@@ -30,6 +30,7 @@ playsDiv.setAttribute("id", "plays-div");
 const userPlayDiv= document.createElement("div");
 userPlayDiv.setAttribute("id", "user-play-div");
 const userPlayText= document.createElement("span");
+userPlayText.setAttribute("id", "user-play-text");
 userPlayText.classList.add("body-text");
 const compPlayDiv= document.createElement("div");
 compPlayDiv.setAttribute("id", "comp-play-div");
@@ -278,6 +279,21 @@ function playRound(playSelection, computerSelection){
         mainDiv.appendChild(playAgainDiv);
     }
 
+    function fadeIn(element){
+        element.style.opacity=0;
+        let fadeStart= Date.now();
+
+        let timer= setInterval(()=>{
+            let timePassed= Date.now()-fadeStart;
+
+            element.style.opacity= timePassed/ 2000;
+
+            if (timePassed >= 2000){
+                clearInterval(timer);
+            }
+        }, 40);
+    }
+
     function startGame(){
 
         let userScore =0;
@@ -330,17 +346,20 @@ function playRound(playSelection, computerSelection){
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
 
-                setTimeout(()=>{
-                    userPlayText.textContent=roundResults[0];
-                }, 1000);
+                userPlayText.textContent=roundResults[0];
+                fadeIn(userPlayText);
+
+              
 
                 setTimeout(()=>{
                     compPlayText.textContent=roundResults[1];
+                    fadeIn(compPlayText);
                 }, 2000);
 
                 setTimeout(()=>{
                    resultText.textContent=resultString;
-                }, 3000);
+                   fadeIn(resultText);
+                }, 4000);
 
 
                 
@@ -356,23 +375,23 @@ function playRound(playSelection, computerSelection){
 
                 setTimeout(()=>{
                     showScores(userScore, computerScore) ;
-                }, 4000);
+                }, 5000);
                 
 
                 
                 setTimeout(()=>{
                     userPlayText.textContent=""; 
-                }, 5000);
+                }, 7000);
 
                
                 setTimeout(()=>{
                     compPlayText.textContent="";
-                }, 5000);
+                }, 7000);
                 
                 
                 setTimeout(()=>{
                     resultText.textContent="";
-                }, 5000);
+                }, 7000);
 
               
 
@@ -385,7 +404,7 @@ function playRound(playSelection, computerSelection){
                     }else{
                         mainDiv.appendChild(selectorButtonsDiv); 
                     }
-                }, 5000);
+                }, 7000);
                 
 
             

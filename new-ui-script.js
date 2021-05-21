@@ -4,13 +4,31 @@ const mainDiv= document.querySelector("#main-div");
 const selectorButtonsDiv= document.createElement("div");
 selectorButtonsDiv.setAttribute("id", "selector-buttons-div");
 
-const rockBtn= document.createElement("button");
-const paperBtn= document.createElement("button");
-const scissorsBtn= document.createElement("button"); //Creating three buttons, one for each selection
+const rockBtn= document.createElement("div");
+const paperBtn= document.createElement("div");
+const scissorsBtn= document.createElement("div"); //Creating three buttons, one for each selection
 
-rockBtn.textContent="ROCK";
-paperBtn.textContent="PAPER";
-scissorsBtn.textContent="SCISSORS";
+
+const rockImg= document.createElement("img");
+rockImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/2229/2229987.png");
+rockImg.classList.add("selector-img");
+rockBtn.appendChild(rockImg);
+
+//rockBtn.textContent="ROCK";
+
+const paperImg= document.createElement("img");
+paperImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/650/650640.png");
+paperImg.classList.add("selector-img");
+paperBtn.appendChild(paperImg);
+
+//paperBtn.textContent="PAPER";
+
+const scissorsImg= document.createElement("img");
+scissorsImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/732/732457.png");
+scissorsImg.classList.add("selector-img");
+scissorsBtn.appendChild(scissorsImg);
+
+//scissorsBtn.textContent="SCISSORS";
 
 rockBtn.setAttribute("data-play", "ROCK");
 paperBtn.setAttribute("data-play", "PAPER");
@@ -73,6 +91,7 @@ compScoreDiv.classList.add("");*/
 selectorBtn.forEach((button)=> { //All three button will be styled, share a class, and added to the 
     button.style.margin= '10px'; //selectorButtonsDiv
     button.classList.add("selector-button");
+    button.classList.add("button-div");
     selectorButtonsDiv.appendChild(button);
 
     
@@ -267,8 +286,9 @@ function playRound(playSelection, computerSelection){
 
         const playAgainDiv= document.createElement("div");
         
-        const playAgainButton=document.createElement("button");
+        const playAgainButton=document.createElement("div");
         playAgainButton.setAttribute("id", "play-again-button");
+        playAgainButton.classList.add("button-div");
        
         playAgainButton.textContent= "play again";
 

@@ -279,7 +279,7 @@ function playRound(playSelection, computerSelection){
         mainDiv.appendChild(playAgainDiv);
     }
 
-    function fadeIn(element){
+    function fadeIn(element){  //gives 'element' the animation effect of fading into the webpage
         element.style.opacity=0;
         let fadeStart= Date.now();
 
@@ -347,15 +347,15 @@ function playRound(playSelection, computerSelection){
                 //against the computer's. Whoever wins the round gets a point
 
                 userPlayText.textContent=roundResults[0];
-                fadeIn(userPlayText);
+                fadeIn(userPlayText); //gives userPlayText the effect of fading into display
 
               
 
                 setTimeout(()=>{
                     compPlayText.textContent=roundResults[1];
                     fadeIn(compPlayText);
-                }, 2000);
-
+                }, 2000); //2s delay. compPlayText wont start fading into display until 2s after the code 
+                          //above it is executed
                 setTimeout(()=>{
                    resultText.textContent=resultString;
                    fadeIn(resultText);
@@ -399,6 +399,8 @@ function playRound(playSelection, computerSelection){
 
                 setTimeout(()=>{
                     if (userScore===5 || computerScore===5){
+                        roundDiv.removeChild(playsDiv); //removes the divs showing the plays of each player 
+                        roundDiv.removeChild(resultTextDiv); //and the round result string 
                         endGame(userScore, computerScore);
     
                     }else{

@@ -48,11 +48,13 @@ body, html{
     font-weight: bold;
 }
 
-button{
+.button-div{
+    display: inline-block;
     border-radius: 10px;
     padding: 10px;
     color: darkgray;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 #selector-buttons-div{
@@ -61,15 +63,19 @@ button{
 }
 
 .selector-button{
+    
     background-color: #8f2626;
     border: 1px solid #4e1818;
-    
-    
 }
 
 #play-again-button{
     background-color: #2e8b4a;
     border: 1px solid #1b502b;
+    
+}
+
+.selector-img{
+    height: 50px;
     
 }
 

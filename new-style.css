@@ -58,7 +58,7 @@ body, html{
 }
 
 #selector-buttons-div{
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     margin: 10px;
 }
 
@@ -75,8 +75,7 @@ body, html{
 }
 
 .selector-img{
-    height: 50px;
-    
+    height: 50px;   
 }
 
 .body-text{
@@ -84,56 +83,64 @@ body, html{
 }
 
 #round-div{
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     margin: 10px;
     padding: 20px;
 }
 
 #plays-div{
     display: flex;
-    border: 1px solid white; 
+    /*border: 1px solid white; */
     padding: 20px;
     justify-content: space-around;
 }
 
 #user-play-div{
     border: 1px solid white; 
-    padding: 20px;
+    padding: 30px;
 }
 
 #comp-play-div{
     border: 1px solid white; 
-    padding: 20px;
+    padding: 30px;
+}
+
+.play-img{
+    height: 55px;
 }
 
 
 #result-text-div{
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     margin: 10px;
     padding: 0px 10px 0px 12px;
 }
 
 #round-score-div{
     display: flex;  
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     padding: 20px;
-    justify-content: center;
+    justify-content:space-around;
 
  
 }
 
 #player-score-div{
     
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     padding: 3px 30px;
     margin: 10px;
 }
 
 #computer-score-div{
     
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     padding: 3px 30px;
-    margin: 10px;
+    margin: 20px;
+}
+
+#play-again-img{
+    height: 40px;
 }
 
 

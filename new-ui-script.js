@@ -47,13 +47,13 @@ const playsDiv= document.createElement("div");
 playsDiv.setAttribute("id", "plays-div");
 const userPlayDiv= document.createElement("div");
 userPlayDiv.setAttribute("id", "user-play-div");
-const userPlayText= document.createElement("span");
-userPlayText.setAttribute("id", "user-play-text");
-userPlayText.classList.add("body-text");
+const userPlayImg= document.createElement("img");
+//userPlayText.setAttribute("id", "user-play-text");
+userPlayImg.classList.add("play-img");
 const compPlayDiv= document.createElement("div");
 compPlayDiv.setAttribute("id", "comp-play-div");
-const compPlayText= document.createElement("span");
-compPlayText.classList.add("body-text");
+const compPlayImg= document.createElement("img");
+compPlayImg.classList.add("play-img");
 
 const resultTextDiv= document.createElement("div"); //This div will contain the (round) result text shown below
 const resultText= document.createElement("p"); 
@@ -289,8 +289,13 @@ function playRound(playSelection, computerSelection){
         const playAgainButton=document.createElement("div");
         playAgainButton.setAttribute("id", "play-again-button");
         playAgainButton.classList.add("button-div");
-       
-        playAgainButton.textContent= "play again";
+
+        const playAgainImg= document.createElement("img");
+        playAgainImg.setAttribute("src", "pngaaa.com-1451153.png");
+        playAgainImg.setAttribute("id", "play-again-img");
+
+        //playAgainButton.textContent= "play again";
+        playAgainButton.appendChild(playAgainImg);
 
         playAgainButton.addEventListener("click", ()=>window.location.reload());
 
@@ -314,13 +319,24 @@ function playRound(playSelection, computerSelection){
         }, 40);
     }
 
+    function selectPlayImage(imageElement, play){
+
+        if (play=="ROCK"){
+            imageElement.src=rockImg.src;
+        }else if(play=="PAPER"){
+            imageElement.src=paperImg.src;
+        }else if(play=="SCISSORS"){
+            imageElement.src=scissorsImg.src;
+        }
+    }
+
     function startGame(){
 
         let userScore =0;
         let computerScore =0;
 
-        userPlayDiv.appendChild(userPlayText);
-        compPlayDiv.appendChild(compPlayText);
+        userPlayDiv.appendChild(userPlayImg);
+        compPlayDiv.appendChild(compPlayImg);
 
         playsDiv.appendChild(userPlayDiv);
         playsDiv.appendChild(compPlayDiv);
@@ -366,14 +382,16 @@ function playRound(playSelection, computerSelection){
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
 
-                userPlayText.textContent=roundResults[0];
-                fadeIn(userPlayText); //gives userPlayText the effect of fading into display
+                //userPlayImg.textContent=roundResults[0];
+                selectPlayImage(userPlayImg, roundResults[0]);
+                fadeIn(userPlayImg); //gives userPlayText the effect of fading into display
 
               
 
                 setTimeout(()=>{
-                    compPlayText.textContent=roundResults[1];
-                    fadeIn(compPlayText);
+                    //compPlayImg.textContent=roundResults[1];
+                    selectPlayImage(compPlayImg, roundResults[1]);
+                    fadeIn(compPlayImg);
                 }, 2000); //2s delay. compPlayText wont start fading into display until 2s after the code 
                           //above it is executed
                 setTimeout(()=>{
@@ -400,12 +418,12 @@ function playRound(playSelection, computerSelection){
 
                 
                 setTimeout(()=>{
-                    userPlayText.textContent=""; 
+                    userPlayImg.src=""; 
                 }, 7000);
 
                
                 setTimeout(()=>{
-                    compPlayText.textContent="";
+                    compPlayImg.src="";
                 }, 7000);
                 
                 

@@ -1,10 +1,14 @@
 body, html{
-    height: 100%;
+    
+    padding: 0;
+    margin: 0;
+
+    
 }
 
 
-.bg-img{
-    /*background-image: url(https://www.technocrazed.com/wp-content/uploads/2015/12/Wood-Wallpaper-Background-21.jpg);*/
+/*.bg-img{
+    background-image: url(https://www.technocrazed.com/wp-content/uploads/2015/12/Wood-Wallpaper-Background-21.jpg);
     background-image: url(https://jumbotech.net/wp-content/uploads/2016/03/7-Best-Pattern-of-Background-Images-for-Websites-1-Dark-Wood.jpg);
     filter: blur(8px);
     -webkit-filter: blur(8px);
@@ -15,13 +19,13 @@ body, html{
     background-size: cover;
 
     
-}
+}*/
 
 * {
     box-sizing: border-box;
   }
 
-#main-div{
+/*#main-div{
     
     
     background-color: rgba(0,0,0, 0.4);
@@ -34,18 +38,20 @@ body, html{
     padding: 20px;
     text-align: center;
 
-}
+}*/
 
 #game-heading{
     color:  #8f7648;
     opacity: 1.0;
-    font-size: 37px;
+    font-size: 40px;
+    text-align: center;
 }
 
 .intro{
-    color:  #F5DEB3;
-    font-size: 18px;
+    color: black;
+    font-size: 20px;
     font-weight: bold;
+    text-align: center;
 }
 
 .button-div{
@@ -58,8 +64,12 @@ body, html{
 }
 
 #selector-buttons-div{
-    /*border: 1px solid white;*/
+    
+    display: flex;
+    justify-content: center;
     margin: 10px;
+    border: 1px solid black;
+    
 }
 
 .selector-button{
@@ -71,6 +81,7 @@ body, html{
 #play-again-button{
     background-color: #2e8b4a;
     border: 1px solid #1b502b;
+
     
 }
 
@@ -80,63 +91,103 @@ body, html{
 
 .body-text{
     color: darkgray;
+    text-align: center;
 }
 
 #round-div{
-    /*border: 1px solid white;*/
+    border: 1px solid black;
     margin: 10px;
     padding: 20px;
 }
 
 #plays-div{
     display: flex;
-    /*border: 1px solid white; */
-    padding: 20px;
-    justify-content: space-around;
+    border: 1px solid black;
+    
+    justify-content: center;
 }
 
 #user-play-div{
-    border: 1px solid white; 
-    padding: 30px;
+    /*border-bottom: 2px solid white;
+filter: drop-shadow(0px 6px 2px  rgb(29, 28, 28));*/
+   width: 100px;
+   height: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 10px;
+   margin-bottom: 10px;
 }
 
 #comp-play-div{
-    border: 1px solid white; 
-    padding: 30px;
+    /*border-bottom: 2px solid white;
+    filter: drop-shadow(0px 6px 2px  rgb(29, 28, 28));*/
+
+width: 100px;
+width: 100px;
+   height: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   
 }
 
 .play-img{
     height: 55px;
+    
 }
 
 
 #result-text-div{
-    /*border: 1px solid white;*/
-    margin: 10px;
-    padding: 0px 10px 0px 12px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    /*margin: 10px;
+    padding: 0px 10px 0px 12px;*/
+    height: 50px;
 }
 
 #round-score-div{
     display: flex;  
-    /*border: 1px solid white;*/
-    padding: 20px;
-    justify-content:space-around;
+    /*border: 1px solid black;*/
+  
+    justify-content: center;
+    text-align: center;
 
  
 }
 
 #player-score-div{
+    color: black;
+    /*border: 1px solid grey;*/
+    padding: 3px 0;
+   
+}
+
+.horiz-line{
+    border-top: 1px solid black;
+    width: 150px;
     
-    /*border: 1px solid white;*/
-    padding: 3px 30px;
-    margin: 10px;
+}
+
+.vertical-line{
+    border-right: 1px solid black;
+    margin-top: 15px;
 }
 
 #computer-score-div{
-    
-    /*border: 1px solid white;*/
-    padding: 3px 30px;
-    margin: 20px;
+    color: black;
+    /*border: 1px solid grey;*/
+    padding: 3px 0;
+   
+}
+
+.play-again-div{
+    display: flex;
+    justify-content: center;
 }
 
 #play-again-img{

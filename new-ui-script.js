@@ -69,6 +69,13 @@ const playerScoreDiv= document.createElement("div");  //Creating divs to contain
 const compScoreDiv= document.createElement("div");    //at lines 29-32
 playerScoreDiv.setAttribute("id", "player-score-div");
 compScoreDiv.setAttribute("id", "computer-score-div");
+
+const verticalLine=document.createElement('div');
+verticalLine.classList.add('vertical-line');
+const userHorizLine=document.createElement('div');
+userHorizLine.classList.add('horiz-line');
+const compHorizLine=document.createElement('div');
+compHorizLine.classList.add('horiz-line');
  
 const playerScoreLabel= document.createElement("p"); //These p elements are for displaying the scores at a given
 const compScoreLabel= document.createElement("p");  //time
@@ -293,7 +300,7 @@ function playRound(playSelection, computerSelection){
         const playAgainImg= document.createElement("img");
         playAgainImg.setAttribute("src", "pngaaa.com-1451153.png");
         playAgainImg.setAttribute("id", "play-again-img");
-
+        playAgainDiv.classList.add("play-again-div");
         //playAgainButton.textContent= "play again";
         playAgainButton.appendChild(playAgainImg);
 
@@ -347,24 +354,27 @@ function playRound(playSelection, computerSelection){
 
         playerScoreText.textContent="0";
         compScoreText.textContent="0";
-
-        playerScoreDiv.appendChild(playerScoreLabel);
+        playerScoreLabel.style.marginRight= '10px';
+        compScoreLabel.style.marginLeft='10px';        playerScoreDiv.appendChild(playerScoreLabel);
+        playerScoreDiv.appendChild(userHorizLine);
         playerScoreDiv.appendChild(playerScoreText);
         compScoreDiv.appendChild(compScoreLabel);
+        compScoreDiv.appendChild(compHorizLine);
         compScoreDiv.appendChild(compScoreText);
 
         roundScoreDiv.appendChild(playerScoreDiv);
+        roundScoreDiv.appendChild(verticalLine);
         roundScoreDiv.appendChild(compScoreDiv);
 
         
         
         roundDiv.appendChild(roundScoreDiv);
         
-        
+        mainDiv.appendChild(selectorButtonsDiv); 
        
         mainDiv.appendChild(roundDiv);
 
-        mainDiv.appendChild(selectorButtonsDiv);
+       
 
         
 
@@ -442,7 +452,7 @@ function playRound(playSelection, computerSelection){
                         endGame(userScore, computerScore);
     
                     }else{
-                        mainDiv.appendChild(selectorButtonsDiv); 
+                        mainDiv.insertBefore(selectorButtonsDiv, roundDiv); 
                     }
                 }, 7000);
                 

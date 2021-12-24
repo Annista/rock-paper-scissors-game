@@ -2,8 +2,18 @@ body, html{
     
     padding: 0;
     margin: 0;
+    height: 100%;
 
     
+}
+
+body{
+    font-family: 'Varela Round', Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(26, 25, 25);
+    background: #e7dbe4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -40,25 +50,31 @@ body, html{
 
 }*/
 
+
+
 #game-heading{
-    color:  #8f7648;
+    color:  #3d052f;
     opacity: 1.0;
-    font-size: 40px;
+    font-size: 60px;
     text-align: center;
+    font-family: 'Fuzzy Bubbles', cursive;
+    
 }
 
 .intro{
-    color: black;
-    font-size: 20px;
+    
+    font-size: 24px;
     font-weight: bold;
     text-align: center;
 }
 
 .button-div{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     padding: 10px;
-    color: darkgray;
+    /*color: darkgray;*/
     font-weight: bolder;
     cursor: pointer;
 }
@@ -68,48 +84,55 @@ body, html{
     display: flex;
     justify-content: center;
     margin: 10px;
-    border: 1px solid black;
+  
     
 }
 
 .selector-button{
     
-    background-color: #8f2626;
-    border: 1px solid #4e1818;
+    background-color: #e4a3d6;
+    border: 3px solid #831568;
+   
+}
+
+.selector-button:hover{
+    box-shadow: 0px 0px 7px 5px #ee9edd;
+    
+
 }
 
 #play-again-button{
-    background-color: #2e8b4a;
+    background-color: #29aa50;
     border: 1px solid #1b502b;
 
     
 }
 
 .selector-img{
-    height: 50px;   
+    height: 55px;   
 }
 
 .body-text{
-    color: darkgray;
+   font-size: 18px;
     text-align: center;
 }
 
 #round-div{
-    border: 1px solid black;
+   
     margin: 10px;
     padding: 20px;
 }
 
 #plays-div{
     display: flex;
-    border: 1px solid black;
+   
     
     justify-content: center;
 }
 
 #user-play-div{
     /*border-bottom: 2px solid white;
-filter: drop-shadow(0px 6px 2px  rgb(29, 28, 28));*/
+filter: drop-shadow(3px 2px 6px  rgb(29, 28, 28));*/
    width: 100px;
    height: 100px;
    display: flex;
@@ -121,7 +144,7 @@ filter: drop-shadow(0px 6px 2px  rgb(29, 28, 28));*/
 
 #comp-play-div{
     /*border-bottom: 2px solid white;
-    filter: drop-shadow(0px 6px 2px  rgb(29, 28, 28));*/
+    filter: drop-shadow(3px 2px 6px   rgb(29, 28, 28));*/
 
 width: 100px;
 width: 100px;
@@ -134,25 +157,25 @@ width: 100px;
 }
 
 .play-img{
-    height: 55px;
+    height: 65px;
     
 }
 
 
 #result-text-div{
-    border: 1px solid black;
+   
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
-    /*margin: 10px;
-    padding: 0px 10px 0px 12px;*/
+    
+    /*margin: 10px;*/
+   
     height: 50px;
 }
 
 #round-score-div{
     display: flex;  
-    /*border: 1px solid black;*/
+   
   
     justify-content: center;
     text-align: center;
@@ -161,26 +184,26 @@ width: 100px;
 }
 
 #player-score-div{
-    color: black;
-    /*border: 1px solid grey;*/
+  
     padding: 3px 0;
    
 }
 
 .horiz-line{
-    border-top: 1px solid black;
-    width: 150px;
+    border-top: 3px solid #831568;
+    width: 180px;
     
 }
 
 .vertical-line{
-    border-right: 1px solid black;
+    border-right: 3px solid #831568;
     margin-top: 15px;
+  
+    
 }
 
 #computer-score-div{
-    color: black;
-    /*border: 1px solid grey;*/
+  
     padding: 3px 0;
    
 }

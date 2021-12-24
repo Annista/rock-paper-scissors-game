@@ -10,21 +10,24 @@ const scissorsBtn= document.createElement("div"); //Creating three buttons, one 
 
 
 const rockImg= document.createElement("img");
-rockImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/2229/2229987.png");
+/*rockImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/2229/2229987.png");*/
+rockImg.setAttribute("src", "./hand-rock.png");
 rockImg.classList.add("selector-img");
 rockBtn.appendChild(rockImg);
 
 //rockBtn.textContent="ROCK";
 
 const paperImg= document.createElement("img");
-paperImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/650/650640.png");
+/*paperImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/650/650640.png");*/
+paperImg.setAttribute("src", "./hand-paper.png");
 paperImg.classList.add("selector-img");
 paperBtn.appendChild(paperImg);
 
 //paperBtn.textContent="PAPER";
 
 const scissorsImg= document.createElement("img");
-scissorsImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/732/732457.png");
+/*scissorsImg.setAttribute("src", "https://image.flaticon.com/icons/png/512/732/732457.png");*/
+scissorsImg.setAttribute("src", "./hand-scissors.png");
 scissorsImg.classList.add("selector-img");
 scissorsBtn.appendChild(scissorsImg);
 
@@ -347,15 +350,19 @@ function playRound(playSelection, computerSelection){
 
         playsDiv.appendChild(userPlayDiv);
         playsDiv.appendChild(compPlayDiv);
-        roundDiv.appendChild(playsDiv);
+       
 
         resultTextDiv.appendChild(resultText);
-        roundDiv.appendChild(resultTextDiv);  
+      
 
         playerScoreText.textContent="0";
         compScoreText.textContent="0";
         playerScoreLabel.style.marginRight= '10px';
-        compScoreLabel.style.marginLeft='10px';        playerScoreDiv.appendChild(playerScoreLabel);
+        
+        compScoreLabel.style.marginLeft='10px'; 
+        
+
+        playerScoreDiv.appendChild(playerScoreLabel);
         playerScoreDiv.appendChild(userHorizLine);
         playerScoreDiv.appendChild(playerScoreText);
         compScoreDiv.appendChild(compScoreLabel);
@@ -387,7 +394,8 @@ function playRound(playSelection, computerSelection){
             button.addEventListener("click", ()=>{
                
                 mainDiv.removeChild(selectorButtonsDiv);
-
+                roundDiv.insertBefore(playsDiv, roundScoreDiv);
+                roundDiv.insertBefore(resultTextDiv, roundScoreDiv); 
                 roundResults= playAgainstComputer(userPlay);
                 //when the buttons are clicked, a round will be played with their respective play 
                 //against the computer's. Whoever wins the round gets a point
@@ -446,9 +454,10 @@ function playRound(playSelection, computerSelection){
                
 
                 setTimeout(()=>{
+                    roundDiv.removeChild(playsDiv); //removes the divs showing the plays of each player 
+                    roundDiv.removeChild(resultTextDiv); //and the round result string 
                     if (userScore===5 || computerScore===5){
-                        roundDiv.removeChild(playsDiv); //removes the divs showing the plays of each player 
-                        roundDiv.removeChild(resultTextDiv); //and the round result string 
+                        
                         endGame(userScore, computerScore);
     
                     }else{

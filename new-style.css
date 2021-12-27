@@ -101,6 +101,7 @@ body {
 #play-again-button {
    background-color: #29aa50;
    border: 2px solid #1b502b;
+   padding: 20px 30px;
 }
 
 #play-again-button:hover {

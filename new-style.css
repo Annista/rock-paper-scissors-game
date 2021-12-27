@@ -1,221 +1,184 @@
-body, html{
-    
-    padding: 0;
-    margin: 0;
-    height: 100%;
-
-    
+body,
+html {
+   padding: 0;
+   margin: 0;
+   height: 100%;
+   font-size: 62.5%;
 }
 
-body{
-    font-family: 'Varela Round', Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(26, 25, 25);
-    background: #e7dbe4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+   font-family: "Varela Round", Verdana, Geneva, Tahoma, sans-serif;
+   color: rgb(26, 25, 25);
+   background: #e7dbe4;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
-
-
-/*.bg-img{
-    background-image: url(https://www.technocrazed.com/wp-content/uploads/2015/12/Wood-Wallpaper-Background-21.jpg);
-    background-image: url(https://jumbotech.net/wp-content/uploads/2016/03/7-Best-Pattern-of-Background-Images-for-Websites-1-Dark-Wood.jpg);
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    height: 100%;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    
-}*/
 
 * {
-    box-sizing: border-box;
-  }
-
-/*#main-div{
-    
-    
-    background-color: rgba(0,0,0, 0.4);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 80%;
-    padding: 20px;
-    text-align: center;
-
-}*/
-
-
-
-#game-heading{
-    color:  #3d052f;
-    opacity: 1.0;
-    font-size: 60px;
-    text-align: center;
-    font-family: 'Fuzzy Bubbles', cursive;
-    
+   box-sizing: border-box;
 }
 
-.intro{
-    
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
+#main-div {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+
+   height: 80vh;
+   width: 80vw;
 }
 
-.button-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    /*color: darkgray;*/
-    font-weight: bolder;
-    cursor: pointer;
+#game-heading {
+   color: #3d052f;
+   font-size: 6.8rem;
+   text-align: center;
+   font-family: "Fuzzy Bubbles", cursive;
 }
 
-#selector-buttons-div{
-    
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-  
-    
+.intro,
+.start-button {
+   font-weight: bold;
 }
 
-.selector-button{
-    
-    background-color: #e4a3d6;
-    border: 3px solid #831568;
-   
+.intro {
+   text-align: center;
+   font-size: 2.2rem;
 }
 
-.selector-button:hover{
-    box-shadow: 0px 0px 7px 5px #ee9edd;
-    
-
+.intro-one {
+   font-size: 3rem;
 }
 
-#play-again-button{
-    background-color: #29aa50;
-    border: 1px solid #1b502b;
-
-    
+.you-word {
+   color: #b377a6;
 }
 
-.selector-img{
-    height: 55px;   
+.comp-word {
+   color: #8175ac;
 }
 
-.body-text{
-   font-size: 18px;
-    text-align: center;
+.start-button-div,
+#selector-buttons-div {
+   display: flex;
+   justify-content: center;
 }
 
-#round-div{
-   
-    margin: 10px;
-    padding: 20px;
+.start-button,
+.button-div {
+   cursor: pointer;
+   border-radius: 10px;
 }
 
-#plays-div{
-    display: flex;
-   
-    
-    justify-content: center;
+.start-button {
+   padding: 20px 40px;
+   font-size: 1.6rem;
+   background-color: #831568;
+   border: transparent;
+   color: #f5b1e6;
 }
 
-#user-play-div{
-    /*border-bottom: 2px solid white;
-filter: drop-shadow(3px 2px 6px  rgb(29, 28, 28));*/
-   width: 100px;
-   height: 100px;
+.start-button:hover,
+.selector-button:hover {
+   box-shadow: 0px 0px 7px 5px #da6cbe;
+}
+
+.button-div {
+   padding: 10px;
+}
+
+.selector-button,
+#user-play-div,
+#comp-play-div {
+   flex: 1;
+   max-width: 180px;
+}
+
+.selector-button {
+   background-color: #e4a3d6;
+   border: 3px solid #831568;
+}
+
+#play-again-button {
+   background-color: #29aa50;
+   border: 2px solid #1b502b;
+}
+
+#play-again-button:hover {
+   box-shadow: 0px 0px 7px 5px #69d88a;
+}
+
+.selector-img,
+.play-img {
+   width: 55px;
+   height: auto;
+   flex: 1;
+}
+
+.body-text {
+   font-size: 2rem;
+   text-align: center;
+}
+
+#round-div {
+   display: flex;
+   flex-direction: column;
+}
+
+#plays-div {
+   display: flex;
+   justify-content: center;
+}
+
+#user-play-div,
+#comp-play-div,
+#result-text-div,
+.button-div {
    display: flex;
    align-items: center;
    justify-content: center;
-   margin-right: 10px;
-   margin-bottom: 10px;
 }
 
-#comp-play-div{
-    /*border-bottom: 2px solid white;
-    filter: drop-shadow(3px 2px 6px   rgb(29, 28, 28));*/
+#user-play-div,
+#comp-play-div {
+   max-width: 250px;
+   margin: 10px;
+   border-radius: 50%;
+   padding: 15px;
+}
 
-width: 100px;
-width: 100px;
-   height: 100px;
+#user-play-div {
+   background: #e4a3d6;
+}
+
+#comp-play-div {
+   background: #b1a3e4;
+}
+
+#result-text-div {
+   height: 60px;
+   font-weight: bold;
+}
+
+#round-score-div,
+.play-again-div {
    display: flex;
-   align-items: center;
    justify-content: center;
-
-   
 }
 
-.play-img{
-    height: 65px;
-    
+#round-score-div {
+   text-align: center;
 }
 
-
-#result-text-div{
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /*margin: 10px;*/
-   
-    height: 50px;
+.horiz-line {
+   border-top: 3px solid #831568;
+   width: 200px;
 }
 
-#round-score-div{
-    display: flex;  
-   
-  
-    justify-content: center;
-    text-align: center;
-
- 
+.vertical-line {
+   border-right: 3px solid #831568;
+   margin-top: 15px;
 }
 
-#player-score-div{
-  
-    padding: 3px 0;
-   
+#play-again-img {
+   height: 40px;
 }
-
-.horiz-line{
-    border-top: 3px solid #831568;
-    width: 180px;
-    
-}
-
-.vertical-line{
-    border-right: 3px solid #831568;
-    margin-top: 15px;
-  
-    
-}
-
-#computer-score-div{
-  
-    padding: 3px 0;
-   
-}
-
-.play-again-div{
-    display: flex;
-    justify-content: center;
-}
-
-#play-again-img{
-    height: 40px;
-}
-
-
-

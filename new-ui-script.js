@@ -12,14 +12,14 @@ const paperBtn = document.createElement("div");
 const scissorsBtn = document.createElement("div"); //Creating three buttons, one for each selection
 
 const rockImg = document.createElement("img");
-rockImg.setAttribute("src", "./hand-rock.png");
+rockImg.setAttribute("src", "./img/hand-rock.png");
 rockImg.classList.add("selector-img");
 rockBtn.appendChild(rockImg);
 
 
 
 const paperImg = document.createElement("img");
-paperImg.setAttribute("src", "./hand-paper.png");
+paperImg.setAttribute("src", "./img/hand-paper.png");
 paperImg.classList.add("selector-img");
 paperBtn.appendChild(paperImg);
 
@@ -27,7 +27,7 @@ paperBtn.appendChild(paperImg);
 
 const scissorsImg = document.createElement("img");
 
-scissorsImg.setAttribute("src", "./hand-scissors.png");
+scissorsImg.setAttribute("src", "./img/hand-scissors.png");
 scissorsImg.classList.add("selector-img");
 scissorsBtn.appendChild(scissorsImg);
 
@@ -254,7 +254,7 @@ function playAgain() {
    playAgainButton.classList.add("button-div");
 
    const playAgainImg = document.createElement("img");
-   playAgainImg.setAttribute("src", "pngaaa.com-1451153.png");
+   playAgainImg.setAttribute("src", "./img/restart.png");
    playAgainImg.setAttribute("id", "play-again-img");
    playAgainDiv.classList.add("play-again-div");
    
